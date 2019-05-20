@@ -1,0 +1,17 @@
+version: "3"
+services:
+  nginx:
+    # replace username/repo:tag with your name and image details
+    image: testnginx:latest
+    deploy:
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "80:80"
+  diyblog:
+    # replace username/repo:tag with your name and image details
+    image: testmysite:latest
+    deploy:
+      restart_policy:
+        condition: on-failure
+    command: uwsgi --ini mysite_uwsgi.ini
